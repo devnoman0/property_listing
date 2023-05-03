@@ -43,17 +43,17 @@ const Filter = () => {
   
 
   return (
-    <div className="bg-gray-100 py-4">
+    <div className="py-4">
       <Container>
         <div className="grid md:grid-cols-6 gap-4">
-        <div className="flex items-center gap-2 w-full md:col-span-2  bg-white py-3 px-6 text-left border border-gray-300 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 sm:text-sm">
+        <div className="flex items-center gap-2 w-full md:col-span-2  bg-gray-200 py-3 px-6 text-left rounded-xl focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 sm:text-sm">
           <BiSearch className="text-gray-700 text-xl"/>
           <input 
           name='address'
           value={value.address}
           onChange={handleChange}
           type="text"
-          className="w-full outline-none" placeholder="Street, City, State, Zip or keyword"/>
+          className="w-full bg-transparent placeholder:text-gray-700 outline-none" placeholder="Street, City, State, Zip or keyword"/>
           </div>
 
 

@@ -19,7 +19,7 @@ const houseDetails = {
 
 const ListingCard = () => {
   return (
-    <div className="shadow-md rounded-3xl md:max-w-sm overflow-hidden relative">
+    <div className="border rounded-3xl md:max-w-sm overflow-hidden relative">
       <Image className="h-40 w-full rounded-b-3xl object-cover" src={House} alt="House" />
 
       <div className="

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import House from "../public/house.jpg";
@@ -19,14 +19,14 @@ const houseDetails = {
 
 const ListingCard = () => {
   return (
-    <div className="border rounded-3xl md:max-w-sm overflow-hidden relative">
-      <Image className="h-40 w-full rounded-b-3xl object-cover" src={House} alt="House" />
+    <div className="rounded-xl shadow-custom md:max-w-sm overflow-hidden relative">
+      <Image className="h-40 w-full object-cover" src={House} alt="House" />
 
-      <div className="
+      <div
+        className="
       w-full h-40 bg-gray-400/20 absolute top-0 left-0 rounded-b-3xl
-      ">
-
-      </div>
+      "
+      ></div>
 
       <div className="flex items-center justify-between w-full px-4 absolute top-4 left-0">
         <span className="bg-white text-gray-700 rounded text-xs py-1 px-2">
@@ -46,17 +46,26 @@ const ListingCard = () => {
         {/* <h3 className="text-gray-700 text-lg mb-1 font-medium">
           {houseDetails.address}
         </h3> */}
-        <p className="text-gray-400 text-sm font-poppins mb-4">{houseDetails.location}</p>
+        <p className="text-gray-400 text-sm font-poppins mb-4">
+          {houseDetails.location}
+        </p>
 
         {/* <div className="h-[1px] w-full bg-gray-200 my-4"></div> */}
 
         <div className="flex items-center justify-between mb-2">
-        
-          <Details Icon={<IoIosBed/>} title="3"/>
-          <Details Icon={<TbBathFilled/>} title="2" type="secondary"/>
-          <Details Icon={<RiRulerFill/>} title="60m" type="warning"/>
-
-          
+          <Details
+            Icon={<IoIosBed />}
+            quantity="3"
+            title="Beds"
+            type="primary"
+          />
+          <Details
+            Icon={<TbBathFilled />}
+            quantity="2"
+            title="Baths"
+            type="secondary"
+          />
+          <Details Icon={<RiRulerFill />} quantity="60m" type="warning" />
         </div>
       </div>
     </div>

@@ -32,7 +32,7 @@ const Feature = () => {
   return (
     <div>
       <p className="uppercase text-lg font-medium text-center text-blue-600 mb-2">
-        Here's How It Works
+        Here&apos;s How It Works
       </p>
       <h1 className="text-3xl mb-12 text-gray-800 max-w-5xl mx-auto md:text-4xl lg:text-5xl font-bold text-center">
         Boosting Deals and Wealth

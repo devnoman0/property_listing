@@ -15,10 +15,10 @@ module.exports = {
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
-        roxborough: ["Roxborough", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       boxShadow: {
-        custom: "0px 50px 100px -2px rgba(20, 20, 21, 0.06)",
+        custom: "0px 10px 30px rgba(20, 20, 21, 0.06)",
       },
       backgroundImage: {
         "primary-gradient":

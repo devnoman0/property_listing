@@ -5,7 +5,7 @@ import React from "react";
 const Details = ({ Icon, title, type, quantity }) => {
   console.log(Icon);
   return (
-    <div className="flex items-center bg-gray-200 py-1 rounded-lg px-3 gap-2">
+    <div className="flex items-center bg-gray-100 py-1 rounded-lg px-3 gap-2">
       {
         <span
           className={`text-sm

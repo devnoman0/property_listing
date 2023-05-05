@@ -31,10 +31,13 @@ const stepsInfo = [
 const Feature = () => {
   return (
     <div>
-      <h1 className="text-3xl mb-16 text-gray-700 max-w-5xl mx-auto md:text-4xl lg:text-5xl font-bold text-center">
-        How can we help you close more deals and build wealth? Heres how it
-        works:
+      <p className="uppercase text-lg font-medium text-center text-blue-600 mb-2">
+        Here's How It Works
+      </p>
+      <h1 className="text-3xl mb-12 text-gray-800 max-w-5xl mx-auto md:text-4xl lg:text-5xl font-bold text-center">
+        Boosting Deals and Wealth
       </h1>
+
       <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-4">
         {stepsInfo.map((stepInfo) => (
           <FeatureCard

@@ -4,12 +4,20 @@ import React from "react";
 import Input from "../Input";
 import Button from "../Button";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+  const { register, handleSubmit, formState } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
-    <div>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4">
         <Input
+          register={register}
           type="email"
           placeholder="@shohanux.com"
           name="email"
@@ -18,7 +26,13 @@ const Login = () => {
       </div>
 
       <div>
-        <Input label={"Password"} type="password" placeholder="password" />
+        <Input
+          register={register}
+          name="password"
+          label={"Password"}
+          type="password"
+          placeholder="password"
+        />
       </div>
 
       <div
@@ -56,7 +70,7 @@ const Login = () => {
           </Link>
         </p>
       </div>
-    </div>
+    </form>
   );
 };
 

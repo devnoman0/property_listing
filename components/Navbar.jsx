@@ -71,7 +71,7 @@ const Navbar = () => {
             ))}
 
             <button
-              onClick={() => signIn("google")}
+              onClick={handleClick}
               className="border border-gray-700 text-gray-700 rounded-full py-2 px-4 font-light"
             >
               Login / Register

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { BsHouseCheckFill, BsTelephoneFill } from "react-icons/bs";
 import { BiMenu } from "react-icons/bi";
 import Container from "./Container";
@@ -9,6 +9,8 @@ import MyModal from "./Modal";
 import { usePathname } from "next/navigation";
 import Login from "./auth/Login";
 import { signIn, useSession } from "next-auth/react";
+import Signup from "./auth/Signup";
+import { LoginContext } from "@/context/LoginContext";
 
 export const MenuItems = [
   {
@@ -32,21 +34,7 @@ export const MenuItems = [
 ];
 
 const Navbar = () => {
-  const pathname = usePathname();
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  const handleClick = () => {
-    setIsOpen(true);
-  };
-
-  const { data: session } = useSession();
-
-  console.log(session);
+  const { openModal } = useContext(LoginContext);
 
   return (
     <div className=" text-gray-800 backdrop-blur-sm border-b border-gray-200">
@@ -64,27 +52,29 @@ const Navbar = () => {
                 href={item.link}
                 className={`transition hover:text-gray-800 ${
                   item.isActive && "text-gray-800"
-                }`}
+                } ${item.isActive && "font-semibold"}`}
               >
                 {item.name}
               </Link>
             ))}
 
             <button
-              onClick={handleClick}
+              onClick={() => openModal()}
               className="border border-gray-700 text-gray-700 rounded-full py-2 px-4 font-light"
             >
               Login / Register
             </button>
           </div>
 
-          <button className="bg-gray-700 text-white p-2 text-xl rounded md:hidden">
+          <button
+            onClick={openModal}
+            className="bg-gray-700 text-white p-2 text-xl rounded md:hidden"
+          >
             <BiMenu />
           </button>
         </div>
-        <MyModal isOpen={isOpen} closeModal={closeModal} title="Welcome back!">
-          <Login />
-        </MyModal>
+        <Login />
+        <Signup />
       </Container>
     </div>
   );

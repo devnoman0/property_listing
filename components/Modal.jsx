@@ -4,7 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { BiX } from "react-icons/bi";
 
-export default function MyModal({ isOpen, closeModal, children, title }) {
+export default function MyModal({ isOpen, closeModal, title, children }) {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>

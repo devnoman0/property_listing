@@ -1,9 +1,11 @@
+"use client";
+
 import React from "react";
 import { IoCartSharp } from "react-icons/io5";
 
 const FeatureCard = ({ step, id, desc }) => {
   return (
-    <div className="border border-dashed bg-white border-gray-300 rounded-xl w-full shadow-custom md:max-w-sm overflow-hidden relative px-6 py-10 lg:py-8">
+    <div className="border border-dashed bg-white border-gray-300 rounded-xl w-full shadow-custom lg:max-w-sm overflow-hidden relative px-6 py-10 lg:py-8">
       <div className="flex flex-col justify-center items-center">
         {/* <h1 className="text-3xl font-semibold text-slate-800 text-center">
           Step {id}

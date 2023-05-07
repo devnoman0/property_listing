@@ -1,27 +1,28 @@
 "use client";
 
 import Image from "next/image";
-import House from "../public/house.jpg";
 import { BiHeart } from "react-icons/bi";
 import { IoIosBed } from "react-icons/io";
 import { TbBathFilled } from "react-icons/tb";
 import { RiRulerFill } from "react-icons/ri";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
+import { useRouter } from "next/navigation";
+
 import Details from "./Details";
 
-// const data = {
-//   price: "$99.000",
-//   address: "Gulfport, MS 39503",
-//   location: "1234 Main St, City, 12345, FL",
-//   beds: "3 Beds",
-//   bathrooms: "2 Bathrooms",
-//   size: "5x7 m2",
-// };
-
 const ListingCard = ({ data }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/listings/${data?.id}`);
+  };
+
   return (
-    <div className="rounded-xl shadow-custom md:max-w-sm overflow-hidden relative">
+    <div
+      onClick={handleClick}
+      className="border border-transparent rounded-xl shadow-custom md:w-full overflow-hidden relative cursor-pointer transition hover:shadow-none hover:border hover:border-dashed hover:border-gray-200"
+    >
       <Image
         className="h-40 w-full object-cover"
         src={data?.image}
@@ -61,7 +62,7 @@ const ListingCard = ({ data }) => {
           </p>
         </div>
 
-        <div className="border border-gray-300 border-dashed w-full my-4"></div>
+        <div className="border border-dashed w-full my-4"></div>
 
         <div className="flex items-center justify-between mb-2">
           <Details

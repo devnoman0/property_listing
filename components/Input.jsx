@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-const Input = ({ type, placeholder, name, label, register }) => {
+const Input = ({ type, placeholder, name, label, register, setError }) => {
   return (
     <div className="flex flex-col items-start">
       {label && (

@@ -1,22 +1,78 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Input from "../Input";
 import Button from "../Button";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import MyModal from "../Modal";
 import { SignupContext } from "@/context/SignupContext";
 import { LoginContext } from "@/context/LoginContext";
+import toast from "react-hot-toast";
+
+import axios from "axios";
 
 const Signup = () => {
   const { isOpen, closeModal } = useContext(SignupContext);
   const { openModal } = useContext(LoginContext);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const { register, handleSubmit, formState } = useForm();
+  if (error) {
+    toast.error(error);
+  }
+
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    setLoading(true);
+    const {
+      userName,
+      email,
+      firstName,
+      lastName,
+      mobile,
+      password,
+      confirmPassword,
+      remember,
+    } = data;
+    if (password !== confirmPassword) {
+      setError("Password does not match");
+      setLoading(false);
+      return;
+    }
+
+    if (!remember) {
+      setError("Accept terms and conditions");
+      setLoading(false);
+      return;
+    }
+
+    axios
+      .post(
+        "/api/auth/register",
+        {
+          userName,
+          email,
+          firstName,
+          lastName,
+          mobile,
+          password,
+          isAdmin: false,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(({ data }) => {
+        console.log(data);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setError(e.response.data.message);
+        setLoading(false);
+      });
   };
 
   const handleLogin = () => {
@@ -32,7 +88,7 @@ const Signup = () => {
             register={register}
             type="text"
             placeholder="shohanux"
-            name="username"
+            name="userName"
             label={"Username"}
           />
         </div>
@@ -68,7 +124,7 @@ const Signup = () => {
         <div className="mb-4">
           <Input
             register={register}
-            name="number"
+            name="mobile"
             label={"Mobile"}
             type="text"
             placeholder="+8801999-828842"
@@ -105,7 +161,12 @@ const Signup = () => {
       "
         >
           <div className="flex items-center">
-            <input type="checkbox" id="remember" value="checked" />
+            <input
+              type="checkbox"
+              {...register("remember")}
+              id="remember"
+              value="checked"
+            />
             <label htmlFor="remember" className="ml-2 cursor-pointer">
               I accept the{" "}
               <span className="text-blue-500 cursor-pointer">
@@ -116,7 +177,9 @@ const Signup = () => {
         </div>
 
         <div className="mt-6">
-          <Button>Sign up</Button>
+          <Button loading={loading} type={"submit"}>
+            Sign up
+          </Button>
         </div>
 
         <div className="mt-4">

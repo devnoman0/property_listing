@@ -3,6 +3,7 @@ import Feature from "@/components/Feature";
 import Filter from "@/components/Filter";
 import ListingCard from "@/components/ListingCard";
 import ListingContainer from "@/components/ListingContainer";
+import { Suspense } from "react";
 
 const propertyDetails = [
   {

@@ -33,7 +33,7 @@ const ListingCard = ({ data }) => {
 
       <div
         className="
-      w-full h-40 bg-gray-400/30 absolute top-0 left-0 rounded-b-3xl
+      w-full h-40 bg-gray-400/10 absolute top-0 left-0 rounded-b-3xl
       "
       ></div>
 

@@ -60,6 +60,7 @@ const Navbar = () => {
 
             <button
               onClick={() => openModal()}
+              // onClick={() => signIn()}
               className="border border-gray-700 text-gray-700 rounded-full py-2 px-4 font-light"
             >
               Login / Register
@@ -68,6 +69,7 @@ const Navbar = () => {
 
           <button
             onClick={openModal}
+            // onClick={() => signIn("credentials")}
             className="bg-gray-700 text-white p-2 text-xl rounded md:hidden"
           >
             <BiMenu />

@@ -8,14 +8,23 @@ import { useForm } from "react-hook-form";
 import MyModal from "../Modal";
 import { LoginContext } from "@/context/LoginContext";
 import { SignupContext } from "@/context/SignupContext";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Login = () => {
   const { isOpen, closeModal } = useContext(LoginContext);
   const { openModal } = useContext(SignupContext);
   const { register, handleSubmit, formState } = useForm();
+  const session = useSession();
+
+  console.log(session);
 
   const onSubmit = (data) => {
-    console.log(data);
+    const { email, password } = data;
+    signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
   };
 
   const handleSignup = () => {
